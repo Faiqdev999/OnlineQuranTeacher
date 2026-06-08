@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quran Teacher – Learn Quran Worldwide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a2e1a, #1a5c3a);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #f0d060;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #f0d060;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #f0d060;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 50px;
+            background: #b8aa78;
+            color: #0a2e1a;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            font-size: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Section titles */
+        section h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #f0d060;
+        }
+
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .feature-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+            font-size: 18px;
+        }
+
+        /* About */
+        .about {
+            padding: 80px 0;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text p {
+            font-size: 20px;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .about-image div {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #f0d060, #c8a830);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+        }
+
+        /* Courses */
+        .courses {
+            padding: 80px 0;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .course-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #f0d060;
+        }
+
+        .course-card p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .course-card .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #f0d060;
+        }
+
+        /* Prayer Time */
+        .prayer-time {
+            padding: 80px 0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .prayer-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .prayer-item h4 {
+            font-size: 22px;
+            color: #f0d060;
+            margin-bottom: 10px;
+        }
+
+        .prayer-item p {
+            font-size: 20px;
+        }
+
+        /* Class Timings Worldwide */
+        .timings {
+            padding: 80px 0;
+            background: rgba(0,0,0,0.15);
+        }
+
+        .timing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .timing-card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .timing-card h4 {
+            font-size: 22px;
+            color: #f3be00;
+            margin-bottom: 10px;
+        }
+
+        .timing-card p {
+            font-size: 18px;
+        }
+
+        /* Countries & Cities */
+        .countries {
+            padding: 80px 0;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .country-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 20px;
+        }
+
+        .country-card i {
+            margin-right: 8px;
+            color: #f0d060;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        .testimonial-card .author {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #f0d060;
+            font-style: normal;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .contact-form select option {
+            color: #000;
+        }
+
+        .contact-form button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            background: #d6a800;
+            color: #0a2e1a;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.02);
+        }
+
+        /* Footer with social icons */
+        footer {
+            background: rgba(0,0,0,0.4);
+            padding: 20px 0 20px;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 32px;
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #f0d060;
+            transform: scale(1.2);
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 16px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 12px;
+                font-size: 16px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-text h2 {
+                text-align: center;
+            }
+
+            section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons (optional, but we use emoji for simplicity) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Online<span>Quran<span>Teacher</span></div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#prayer">Prayer</a>
+                <a href="#timings">Timings</a>
+                <a href="#countries">Countries</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Learn Quran Online with <span>Professional Teachers</span></h1>
+            <p>One-on-one classes for all ages. Learn Tajweed, Memorization, Experience Quran teacher at your convenience – around the world.</p>
+            <a href="#contact" class="btn">Join Free Trial Classes</a>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">🕌</div>
+                    <h3>Experience Teachers</h3>
+                    <p>Professional Quran teachers with 5 years of experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">⏰</div>
+                    <h3>fex-Timing</h3>
+                    <p>Schedule classes at your convenience, 24/7 availability.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">👤</div>
+                    <h3>One-on-One Classes</h3>
+                    <p>Personalized attention for faster and effective learning.</p>
+                </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Our Online Quran Classes</h2>
+                    <p>We are a dedicated team of Quran teachers committed to spreading the knowledge of the Holy Quran. Our academy offers online classes for students worldwide, from beginners to advanced levels.</p>
+                    <p>With over 10 years of experience, we have taught hundreds of students to read, memorize, and understand the Quran with proper Tajweed. 
+                    Contact details: +92 3337359963 
+                    Contact details: +92 3023399720    
+                    Teacher Name: Hifiz Siraj Ahmed 
+                    Email: info@onlinequranteacher.com
+                    </p>
+                    <a href="#contact" class="btn">JOIN NOW</a>
+                </div>
+                <div class="about-image">
+                    <div>📖</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses" id="courses">
+        <div class="container">
+            <h2>Our Courses</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <h3>Quran Reading</h3>
+                    <p>Learn to read the Quran correctly from the basics.</p>
+                    
+                </div>
+                <div class="course-card">
+                    <h3>Tajweed</h3>
+                    <p>Master the rules of proper Quran recitation.</p>
+                 
+                </div>
+                <div class="course-card">
+                    <h3>Memorization</h3>
+                    <p>Structured Hifz program with revision support.</p>
+                    
+                </div>
+                <div class="course-card">
+                    <h3>Arabic Language</h3>
+                    <p>Understand Quranic Arabic step by step.</p>
+                    <div class="price">$35/month</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Time Section -->
+    <section class="prayer-time" id="prayer">
+        <div class="container">
+            <h2>🕌 Prayer Times (Example – Makkah)</h2>
+            <div class="prayer-grid">
+                <div class="prayer-item">
+                    <h4>Fajr</h4>
+                    <p>5:12 AM</p>
+                </div>
+                <div class="prayer-item">
+                    <h4>Dhuhr</h4>
+                    <p>12:30 PM</p>
+                </div>
+                <div class="prayer-item">
+                    <h4>Asr</h4>
+                    <p>3:45 PM</p>
+                </div>
+                <div class="prayer-item">
+                    <h4>Maghrib</h4>
+                    <p>6:20 PM</p>
+                </div>
+                <div class="prayer-item">
+                    <h4>Isha</h4>
+                    <p>7:50 PM</p>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top:20px; opacity:0.8;">* Timings vary by location. We provide accurate timings for your city upon registration.</p>
+        </div>
+    </section>
+
+    <!-- Class Timings Worldwide -->
+    <section class="timings" id="timings">
+        <div class="container">
+            <h2>🌍 Classes Timings Worldwide</h2>
+            <div class="timing-grid">
+                <div class="timing-card">
+                    <h4>North America</h4>
+                    <p>9 AM – 11 PM EST</p>
+                </div>
+                <div class="timing-card">
+                    <h4>Europe</h4>
+                    <p>10 AM – 10 PM GMT</p>
+                </div>
+                <div class="timing-card">
+                    <h4>Middle East</h4>
+                    <p>8 AM – 12 AM AST</p>
+                </div>
+                <div class="timing-card">
+                    <h4>South Asia</h4>
+                    <p>6 AM – 11 PM IST</p>
+                </div>
+                <div class="timing-card">
+                    <h4>Australia</h4>
+                    <p>7 AM – 9 PM AEST</p>
+                </div>
+                <div class="timing-card">
+                    <h4>Africa</h4>
+                    <p>7 AM – 10 PM CAT</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countries & Cities -->
+    <section class="countries" id="countries">
+        <div class="container">
+            <h2>📍 Countries & Cities We Teach</h2>
+            <div class="country-grid">
+                <div class="country-card"><i class="fas fa-globe"></i> USA – New York, Chicago, Houston</div>
+                <div class="country-card"><i class="fas fa-globe"></i> UK – London, Birmingham, Manchester</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Canada – Toronto, Vancouver, Montreal</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Saudi Arabia – Riyadh, Jeddah, Makkah</div>
+                <div class="country-card"><i class="fas fa-globe"></i> UAE – Dubai, Abu Dhabi, Sharjah</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Pakistan – Karachi, Lahore, Islamabad</div>
+                <div class="country-card"><i class="fas fa-globe"></i> India – Mumbai, Delhi, Hyderabad</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Bangladesh – Dhaka, Chittagong</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Australia – Sydney, Melbourne</div>
+                <div class="country-card"><i class="fas fa-globe"></i> Malaysia – Kuala Lumpur</div>
+            </div>
+            <p style="text-align:center; margin-top:30px; opacity:0.8;">And many more – we teach students from over 40 countries!</p>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Book a Free Trial</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number">
+                <select>
+                    <option value="">Select Course</option>
+                    <option>Quran Reading</option>
+                    <option>Tajweed</option>
+                    <option>Memorization</option>
+                    <option>Arabic Language</option>
+                </select>
+                <textarea rows="4" placeholder="Message (optional)"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer with Social Icons -->
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="Worldwide"><i class="fas fa-globe"></i></a>
+            </div>
+            <p>&copy; 2025 Online Quran Teacher. All rights reserved. | Teach the Quran, spread the light.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
